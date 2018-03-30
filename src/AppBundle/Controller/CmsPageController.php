@@ -31,7 +31,6 @@ class CmsPageController extends Controller
             return $this->redirectToRoute('homepage');
         }
         
-
         return $this->render('@App/CmsPage/cms_page_category.html.twig', [
             'cmsStaticPage' => $cmsStaticPage,
             'cmsCategory' => $cmsCategory,

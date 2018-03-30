@@ -104,12 +104,6 @@ class Availability {
         return $dates;
     }
     
-    
-    public function getAllDatesForCalendar() 
-    {
-        
-    }
-
     /**
      * Check if dates period is available
      * @return bool

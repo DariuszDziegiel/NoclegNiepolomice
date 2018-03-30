@@ -36,6 +36,7 @@ class UserController extends Controller
         $form = $this->createForm(UserType::class, $userEntity, [
             'validation_groups' => ['ProfileEdit']
         ]);
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {

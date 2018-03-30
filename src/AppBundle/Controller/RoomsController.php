@@ -37,6 +37,7 @@ class RoomsController extends Controller {
         if (!$rsRoom) {
             return $this->redirectToRoute('homepage');
         }
+        
         //room facilities
         $rsFacilityItems = $rsRoom->getFacilityItems();
         

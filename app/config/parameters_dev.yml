@@ -2,7 +2,7 @@ parameters:
     #MAILER
     mailer_transport: smtp
     mailer_user:      nadawca@noclegniepolomice.pl
-    mailer_password:  4RIEz2hZ
+    mailer_password:  ~
     mailer_host:      s95.linuxpl.com
 
     mailer_from_mail: nadawca@noclegniepolomice.pl
@@ -15,16 +15,16 @@ parameters:
     database_host: localhost
     database_port: null
     database_name: noclegniepolomice
-    database_user: root
-    database_password: passwd
+    database_user: ~
+    database_password: ~
 
     #facebook login
-    facebook_client_id: 123
-    facebook_client_secret: 123
+    facebook_client_id: ~
+    facebook_client_secret: ~
 
     #google login
-    google_client_id: 123
-    google_client_secret: 123
+    google_client_id: ~
+    google_client_secret: ~
 
     #google maps
-    google_maps_api_key: ~\
+    google_maps_api_key: ~
