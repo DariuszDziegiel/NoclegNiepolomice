@@ -1,0 +1,61 @@
+{# @var reservation \ReservationBundle\Entity\ReservationForm #}
+
+{% for message in app.session.flashBag.get('remove_message') %}
+    <div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+
+<table class="table table-striped table-hover table-bordered" id="reservations-tbl">
+    <thead class="bg-primary">
+        <tr>
+            <th>ID</th>
+            <th>Data<br />przyjazdu</th>
+            <th>Data<br />wyjazdu</th>
+            <th>Nazwisko</th>
+            <th>Imię</th>
+            <th>L. osób</th>
+            <th>Tel.</th>
+            <th>Email</th>
+            <th>Uwagi</th>
+            <th></th>
+        </tr>
+    </thead>
+    {% for reservation in reservations %}
+        <tr data-reservation-id="{{ reservation.id }}" class="reservation-row">
+            <td>
+                {{ reservation.id }}
+            </td>
+            <td>
+                {{ reservation.dateFrom.format('Y-m-d') }}
+            </td>
+            <td>
+                {{ reservation.dateTo.format('Y-m-d') }}
+            </td>
+            <td>
+                {{ reservation.surname }}
+            </td>
+            <td>
+                {{ reservation.name }}
+            </td>
+            <td>
+                {{ reservation.persons }}
+            </td>
+            <td>
+                {{ reservation.phone }}
+            </td>
+            <td>
+                {{ reservation.email }}
+            </td>
+            <td>
+                <small>
+                    {{ reservation.description| striptags| wordwrap(15, '<br>' )| raw }}
+                </small>
+            </td>
+            <td>
+                <a href="{{ path('admin_reservations_remove', {'id': reservation.id, 'year': year , 'month': month} ) }}"
+                   class="reservation-remove-btn btn btn-danger">
+                    Usuń
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,16 @@
+{% set imgFiles = cmsStaticPages.gallery.filesByType('img')  %}
+<div class="section-content carousel-wrapper" style="background-image: url({{ asset('images/main_slider/stradom.jpg') }})">
+    <div class="owl-carousel">
+        {% for file in imgFiles  if imgFiles is not empty %}
+            <div class="slider-item">
+                {% set filePath = cmsStaticPages.gallery.filesDir ~ file.fileName %}
+                <a href="{{ asset(filePath) }}">
+                    <img class="lazy image img-responsive gallery-file"
+                         src="{{ asset('thumb.php') }}?src={{ asset(filePath) }}&w=444&h=290"
+                         alt=""
+                    >
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,70 @@
+#av-calendar-wrapper {
+  position: relative;
+  min-height: 300px;
+  .loading-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
+}
+
+.calendar-buttons {
+  .calendar-btn {
+    border: 0 !important;
+    margin-bottom: 2px;
+  }
+}
+
+.calendar-table {
+  width: 100%;
+  @include box-shadow(0, 0, 10px, 2px, #EAEAEA);
+
+  th {
+    text-align: center;
+  }
+
+  .month-name {
+    text-align: center;
+    border-bottom: 1px solid #eaeaea;
+    background-color: $theme-color-transparent;
+    color: #FFF;
+    text-transform: uppercase;
+    @include box-shadow(0, 0, 2px, 0, #666);
+  }
+
+  .day-names{
+    padding: {
+      top: 5px;
+      bottom: 5px;
+    }
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  .day-cell {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #EEE;
+
+    &:hover {
+      //@include box-shadow(0, 0, 10px, 2px, $theme-color)
+    }
+
+  }
+
+  .day-reserved {
+    background-color: #d72638;
+    color: #FFF;
+  }
+
+  .day-tmp-reserved {
+    background-color: #007fff;
+    color: #FFF;
+  }
+
+  .day-free {
+
+  }
+
+}
+

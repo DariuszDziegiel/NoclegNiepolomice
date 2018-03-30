@@ -1,0 +1,20 @@
+services:
+
+    app.calendar:
+        class: ReservationBundle\Utils\Calendar
+        arguments: ['@doctrine.orm.entity_manager', '@templating', '@translator.default']
+
+    app.reservation:
+        class: ReservationBundle\Utils\Reservation
+        arguments: ['@doctrine.orm.entity_manager']
+
+    app.availability:
+        class: ReservationBundle\Utils\Availability
+        arguments: ['@doctrine.orm.entity_manager']
+
+    app.mailer_reservation:
+        class: ReservationBundle\Utils\MailerReservation
+        arguments: ['@swiftmailer.mailer.real_mailer', '@templating', '@service_container', '@app.config_helper' ]
+
+
+

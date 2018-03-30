@@ -1,0 +1,21 @@
+@import "../../../../../AppBundle/Resources/public/_Common/css/partials/variables";
+@import "../../../../../AppBundle/Resources/public/_Common/css/partials/mixins";
+@import "../../../../../AppBundle/Resources/public/_Common/css/partials/calendar_availability";
+
+
+.calendar-buttons {
+  .calendar-btn {
+    font-size: 1.5em;
+  }
+}
+
+.month-name {
+  font-size: 2.3rem;
+}
+
+.day-cell {
+  cursor: pointer;
+  &:hover {
+    @include box-shadow(inset, 0, 0, 10px, #666);
+  }
+}

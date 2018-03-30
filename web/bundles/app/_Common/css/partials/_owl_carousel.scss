@@ -1,0 +1,70 @@
+
+/*
+=============== CAROUSEL =========================
+*/
+.carousel-wrapper {
+  position: relative;
+  z-index: 0;
+  background-color: #C0C0C0;
+  padding: 40px;
+  background-position: center center;
+  background-size: cover;
+  &:after {
+    z-index: 1;
+    content: ' ';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, .3);
+  }
+}
+
+.owl-carousel {
+  z-index: 2;
+  position: relative;
+  background-color: #FFF;
+  padding: 10px;
+}
+
+.slider-item {
+  overflow: hidden;
+}
+
+.slider-item img {
+  cursor: pointer;
+  object-fit: cover;
+}
+
+.slider-item img:hover {
+  transform: scale(1.1);
+  transition: transform .75s;
+}
+
+
+.owl-prev {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  background-color: #FFF;
+  padding: 10px;
+  font-size: 1.4em;
+  @include transform(translate(0, -50%))
+}
+
+.owl-next {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  background-color: #FFF;
+  padding: 10px;
+  font-size: 1.4em;
+  @include transform(translate(0, -50%))
+}
+
+.owl-prev, .owl-next {
+  @include box-shadow(0, 0, 5px, 1px, #000)
+}

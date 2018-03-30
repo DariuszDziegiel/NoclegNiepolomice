@@ -1,0 +1,20 @@
+{# @var page_config \AppBundle\Utils\ConfigHelper #}
+<div id="footer" class="container-fluid">
+    <div id="footer-content">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="footer-contact">
+                        {{ page_config.value('footer_contact')| raw }}
+                    </div>
+                    <div id="footer-copy-realisation">
+                        Copyright &copy; {{ 'now'| date('Y') }}
+                    </div>
+                </div>
+                <div class="col-sm-4 second-hotel">
+                    <a href="http://bikol.pl" target="_blank">
+                        <img src="{{ asset('images/page/logo_bikol.png') }}" alt="logo bikol" class="img-responsive logo-bikol"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+</div>

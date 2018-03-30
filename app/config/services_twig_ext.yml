@@ -1,0 +1,6 @@
+services:
+    app.twig_extension:
+        class: AppBundle\Twig\TwigExtension
+        public: false
+        tags:
+            - { name: twig.extension }

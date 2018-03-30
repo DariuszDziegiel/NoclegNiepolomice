@@ -1,0 +1,35 @@
+
+#--------------- ROUTING BUNDLES-------------------------
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+reservation:
+    resource: "@ReservationBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+#---------------------------------------------------------
+
+oneup_uploader:
+    resource: .
+    type: uploader
+
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+
+_bazinga_jstranslation:
+    resource: "@BazingaJsTranslationBundle/Resources/config/routing/routing.yml"
+
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+

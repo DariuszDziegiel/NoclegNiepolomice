@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu_admin>
+
+    <category name="Konfiguracja" id="configuration">
+        <item label="Parametry konfiguracyjne">
+            <route>cms_config_index</route>
+            <icon>glyphicon glyphicon-cog</icon>
+        </item>
+        <item label="Języki">
+            <route>cms_language_index</route>
+            <icon>glyphicon glyphicon-globe</icon>
+        </item>
+        <!--<item label="Slider">
+            <route>cms_slider_index</route>
+            <icon>glyphicon glyphicon-picture</icon>
+        </item>-->
+        <!--<item label="Wyposażenie">
+            <route>rs_facility_item_index</route>
+            <icon>glyphicon glyphicon-cog</icon>
+        </item>
+        <item label="Wyżywienie">
+            <route>rs_meal_index</route>
+            <icon>glyphicon glyphicon-cutlery</icon>
+        </item>-->
+    </category>
+
+    <category name="Podstrony" id="content">
+        <item label="Oferta">
+            <route>admin_cms_static_page_edit</route>
+            <param name="param">offer</param>
+            <icon>glyphicon glyphicon-file</icon>
+        </item>
+        <item label="Cena">
+            <route>admin_cms_static_page_edit</route>
+            <param name="param">price</param>
+            <icon>glyphicon glyphicon-file</icon>
+        </item>
+        <item label="Rezerwacja">
+            <route>admin_cms_static_page_edit</route>
+            <param name="param">reservation</param>
+            <icon>glyphicon glyphicon-file</icon>
+        </item>
+        <item label="Galeria">
+            <route>admin_cms_static_page_edit</route>
+            <param name="param">gallery</param>
+            <icon>glyphicon glyphicon-file</icon>
+        </item>
+        <item label="Kontakt">
+            <route>admin_cms_static_page_edit</route>
+            <param name="param">contact</param>
+            <icon>glyphicon glyphicon-file</icon>
+        </item>
+    </category>
+
+    <category name="Rezerwacje" id="reservations">
+        <item label="Rezerwacje">
+            <route>admin_reservations_index</route>
+            <icon>glyphicon glyphicon-list</icon>
+        </item>
+        <item label="Dostępność">
+            <route>admin_availability_calendar</route>
+            <icon>glyphicon glyphicon-calendar</icon>
+        </item>
+    </category>
+
+</menu_admin>

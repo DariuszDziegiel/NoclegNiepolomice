@@ -1,0 +1,164 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('vendor/vegas/dist/vegas.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/Magnific-Popup/dist/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/owl.carousel/dist/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/AppBundle/Resources/public/Default/css/main_page.css') }}">
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('vendor/vegas/dist/vegas.min.js') }}"></script>
+    <script src="{{ asset('vendor/Magnific-Popup/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('vendor/owl.carousel/dist/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery_lazyload/jquery.lazyload.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/google-maps-utility-library-v3/markerwithlabel/src/markerwithlabel_packed.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('bundles/AppBundle/Resources/public/CmsStaticPage/js/page_localisation.min.js') }}"></script>>
+    <script src="{{ asset('bundles/ReservationBundle/Resources/public/js/reservation_form.min.js') }}"></script>
+    <script>
+        var CALENDAR_ROUTE = 'calendar_draw';
+    </script>
+    <script src="{{ asset('bundles/ReservationBundle/Resources/public/js/reservation_calendar.min.js') }}"></script>
+    <script src="{{ asset('bundles/AppBundle/Resources/public/Default/js/main_page.min.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    {# Main Image #}
+    <div id="main-image" class="jquery-background-video-wrapper">
+        <div class="img-box-txt img-box-txt-fade" id="video-txt">
+            <h1 class="img-box-title">{{ page_config.value('main_page_title')| raw }}</h1>
+            <h2 class="img-box-subtitle">{{ page_config.value('main_page_subtitle')| raw }}</h2>
+            {# <div class="img-box-scroll-btn"></div> #}
+        </div>
+    </div>
+
+    <div class="contact-phone">
+        <a href="mailto:{{ page_config.value('contact_email') }}">
+            <span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;{{ page_config.value('contact_email') }}
+        </a>
+        <a href="tel:{{ page_config.value('contact_phone') }}" target="_blank">
+            <span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;{{ page_config.value('contact_phone') }}
+        </a>
+    </div>
+
+    {# OFFER #}
+    <section id="offer" class="page-section">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title-txt">Oferta</span>
+            </div>
+            <div class="room-properties">
+                <div class="property-icon">
+                    <i class="fa fa-user"></i>
+                    <span class="property-icon-txt">Max. 2 osoby dorosłe</span>
+                </div>
+                <div class="property-icon">
+                    <i class="fa fa-bed"></i>
+                    <span class="property-icon-txt">2 łóżka pojedyncze</span>
+                </div>
+                <div class="property-icon">
+                    <i class="fa fa-bed"></i>
+                    <span class="property-icon-txt">1 dostawka</span>
+                </div>
+                <div class="property-icon">
+                    <i class="fa fa-square-o"></i>
+                    <span class="property-icon-txt">25m<sup>2</sup></span>
+                </div>
+            </div>
+            <div class="section-content">
+                {{ cmsStaticPages.offer.getDescription()| raw }}
+            </div>
+        </div>
+    </section>
+
+    {# PRICES #}
+    <section id="prices" class="page-section">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title-txt">CENA</span>
+            </div>
+            <div class="section-content">
+                {{ cmsStaticPages.price.getDescription()| raw }}
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            {# REZERWACJA #}
+            <div class="col-sm-7 col-md-6">
+                <section id="reservation">
+                    <div class="section-title">
+                        <span class="section-title-txt">Rezerwacja</span>
+                    </div>
+                    <div class="section-content">
+                        {{ cmsStaticPages.reservation.getDescription()| raw }}
+                        <form action="{{ path('cms_reservation_add') }}" method="post" class="reservation-form" novalidate>
+                            <div class="reservation-form-message"></div>
+                            <div class="reservation-form-body">
+                                {% include '@App/Default/partails/reservation_form.html.twig' %}
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+            {# DOSTĘPNOŚć / KALENDARZ#}
+            <div class="col-sm-5 col-md-6">
+                <section id="calendar">
+                    <div class="section-title">
+                        <span class="section-title-txt">Dostępność</span>
+                    </div>
+                    <div class="section-content" id="av-calendar-wrapper" data-year="{{ 'now'| date('Y') }}" data-month="{{ 'now'| date('n') }}">
+                        {{ render(controller(
+                            'ReservationBundle:CalendarAvailability:drawCalendar',
+                            {
+                                'year': 'now'| date('Y'),
+                                'month': 'now'| date('m'),
+                                'numberOfMonths': 1
+                            }
+                        )) }}
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    {# GALERIA #}
+    <section id="gallery">
+        <div class="section-title">
+            <span class="section-title-txt">GALERIA</span>
+        </div>
+        <div class="container">
+            {{ cmsStaticPages.gallery.getDescription()| raw }}
+        </div>
+        {% include '@App/Default/partails/gallery.html.twig' %}
+    </section>
+    {# LOCATION #}
+    <div class="section-map-wrapper section-wrapper" id="location">
+        <div class="section-title">
+            <span class="section-title-txt">Lokalizacja</span>
+        </div>
+        <div id="google-map">
+            <div class="map-loading-wrapper">
+                <div class="map-loading-content">
+                    <img src="{{ asset('images/loading_circle.gif') }}" alt="">
+                    <br />
+                    {{ 'map_loading'| trans }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {# CONTACT #}
+    <section id="contact" class="page-section">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-title-txt">Kontakt</span>
+            </div>
+            <div class="section-content">
+                {{ cmsStaticPages.contact.getDescription()| raw }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

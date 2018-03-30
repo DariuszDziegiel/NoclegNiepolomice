@@ -1,0 +1,40 @@
+{% form_theme reservationForm 'bootstrap_3_layout.html.twig'  %}
+<div class="row">
+    <div class="col-sm-4">
+        {{ form_row(reservationForm.dateFrom) }}
+    </div>
+    <div class="col-sm-4">
+        {{ form_row(reservationForm.dateTo) }}
+    </div>
+    <div class="col-sm-4">
+        {{ form_row(reservationForm.persons) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        {{ form_row(reservationForm.name) }}
+    </div>
+    <div class="col-sm-6">
+        {{ form_row(reservationForm.surname) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        {{ form_row(reservationForm.phone) }}
+    </div>
+    <div class="col-sm-6">
+        {{ form_row(reservationForm.email) }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        {{ form_row(reservationForm.description) }}
+    </div>
+</div>
+
+<div class="form-group form-buttons-row">
+    <button type="submit" class="btn reservation-save-btn" name="">
+        <span class="cms-reservation-loader"></span> Zapisz Rezerwację
+    </button>
+</div>
+{{ form_widget(reservationForm._token) }}

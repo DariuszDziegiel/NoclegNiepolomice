@@ -1,0 +1,10 @@
+<div class="section-content" id="av-calendar-wrapper" data-year="{{ 'now'| date('Y') }}" data-month="{{ 'now'| date('n') }}">
+    {{ render(controller(
+    'ReservationBundle:CalendarAvailability:drawCalendar',
+    {
+        'year': year| default('now'| date('Y')),
+        'month': month| default('now'| date('m')),
+        'numberOfMonths': 1
+    }
+    )) }}
+</div>

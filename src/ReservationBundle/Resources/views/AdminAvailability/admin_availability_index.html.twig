@@ -1,0 +1,26 @@
+{% extends "@Admin/layout.html.twig" %}
+
+{% block js %}
+    <script>
+        var CALENDAR_ROUTE = 'calendar_draw_admin'
+    </script>
+    <script src="{{ asset('bundles/ReservationBundle/Resources/public/js/reservation_calendar.min.js') }}"></script>
+    <script src="{{ asset('bundles/ReservationBundle/Resources/public/AdminAvailability/js/admin_availability.min.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('bundles/ReservationBundle/Resources/public/AdminReservations/css/admin_reservations_index.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/ReservationBundle/Resources/public/AdminAvailability/css/admin_avalability_index.css') }}">
+    <style>
+        .calendar-btn {display: block;}
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-10">
+            {% include '@Reservation/AdminReservations/partials/admin_availability_calendar.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
+

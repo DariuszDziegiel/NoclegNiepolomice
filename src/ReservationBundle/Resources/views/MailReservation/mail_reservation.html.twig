@@ -1,0 +1,63 @@
+{# @var reservationForm \ReservationBundle\Entity\ReservationForm #}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .reservation-info th { font-weight: bold; }
+        .reservation-info th, .reservation-info td { padding: 5px; border: 1px solid #EAEAEA; text-align: left }
+    </style>
+</head>
+<body>
+<main>
+    <header>
+        <h1>Nowa rezerwacja na stronie <b>NoclegNiepolomice.pl</b></h1>
+    </header>
+    <table class="reservation-info">
+        <tr>
+            <th>Data przyjazdu</th>
+            <td>{{ reservationForm.dateFrom.format('d-m-Y') }}</td>
+        </tr>
+        <tr>
+            <th>Data wyjazdu</th>
+            <td>{{ reservationForm.dateTo.format('d-m-Y') }}</td>
+        </tr>
+        <tr>
+            <th>Liczba osób</th>
+            <td>{{ reservationForm.persons }}</td>
+        </tr>
+        <tr>
+            <th>Imię</th>
+            <td>{{ reservationForm.name }}</td>
+        </tr>
+        <tr>
+            <th>Nazwisko</th>
+            <td>{{ reservationForm.surname }}</td>
+        </tr>
+        <tr>
+            <th>Telefon</th>
+            <td>{{ reservationForm.phone }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ reservationForm.email }}</td>
+        </tr>
+        <tr>
+            <th>Uwagi</th>
+            <td>
+                {% if reservationForm.description| length %}
+                    {{ reservationForm.description| raw }}
+                    {% else %}
+                    -------
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</main>
+<footer>
+    <hr>
+    {{ page_config.value('footer_contact')| raw }}
+</footer>
+</body>
+</html>

@@ -1,0 +1,327 @@
+@import "../../_Common/css/partials/variables";
+@import "../../_Common/css/partials/mixins";
+@import "../../_Common/css/partials/image_box";
+@import "../../_Common/css/partials/main_page_map";
+@import "../../_Common/css/partials/main_page_gallery";
+@import "../../_Common/css/partials/owl_carousel";
+@import "../../_Common/css/partials/calendar_availability";
+//@import "../../_Common/css/partials/shadows";
+
+#main-image {
+  position: relative;
+  overflow: hidden;
+  height: 60vh;
+  z-index: 0;
+  background-image: url('/images/main_slider/stradom.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include box-shadow(0,0, 18px, 0, #666);
+}
+
+
+#main-image > video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#main-image::after {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .2);
+}
+
+.image-box-pic-packages {
+  min-height: 520px;
+}
+
+/**/
+.image-full-width-container {
+
+}
+
+section {
+  margin: {
+    top: 15px;
+    bottom: 15px;
+  };
+}
+
+.section-title {
+  text-align: center;
+  //background-color: $theme-white-transparent;
+  color: #000;
+  font-size: 1.5em;
+  padding: {
+    bottom: 15px;
+  }
+
+  .section-title-txt {
+    position: relative;
+    display: inline-block;
+    border: {
+      //bottom: 2px solid $theme-color-transparent;
+      //top: 2px solid $theme-color-transparent;
+    }
+  }
+
+  .section-title-txt:before {
+    content: ' ';
+    position: absolute;
+    width: 100px;
+    border-top: 1px solid $theme-color;
+    border-bottom: 1px solid $theme-color;
+    height: 4px;
+    left: -110px;
+    top: 50%;
+  }
+
+  .section-title-txt:after {
+    content: ' ';
+    position: absolute;
+    width: 100px;
+    border-top: 1px solid $theme-color;
+    border-bottom: 1px solid $theme-color;
+    height: 4px;
+    right: -110px;
+    top: 50%;
+  }
+
+}
+
+.section-title.section-title-white {
+  color: #FFF;
+}
+
+.section-active {
+
+}
+
+
+.vegas-overlay {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  opacity: .3;
+}
+
+.vegas-animation-kenburns {
+  animation: kenburns ease-out;
+  transition-duration: 10s;
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+#main-image-text-box {
+  z-index: 2;
+  position: absolute;
+  bottom: 15px;
+  left: 0px;
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  //@include box-shadow(-5px, -5px, 50px, 11px, #000);
+  @include box-shadow(0, 0, 18px, 0, #000);
+  h2 {
+    text-align: center;
+    margin: {
+      top: 10px;
+      bottom: 10px;
+    }
+  }
+}
+
+
+.main-image-text-box-xs {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px 10px 10px 20px;
+  //@include box-shadow(-5px, -5px, 50px, 11px, #000);
+  //@include box-shadow(0, 0, 18px, 0, #000);
+  h2 {
+    text-align: center;
+  }
+}
+
+
+
+
+/*XS && SM*/
+@media  (max-width: 992px) {
+  #main-image-text-box {
+    width: 100%;
+    bottom: 0;
+  }
+
+}
+
+
+/*XS*/
+@media (max-width: 768px) {
+
+  .image-box-pic-packages {
+    height: 100vh !important;
+  }
+
+  .section {
+    .image-box-pic-page-section:after {
+      display: none !important;
+    }
+    .image-box-pic-page-section {
+      .page-section {
+        padding: 10px;
+      }
+    }
+  }
+
+  #footer-content {
+    padding: {
+    }
+  }
+
+  .image-box {
+    .page-cell {
+      background-color: rgba(255, 255, 255, 0.8);
+      height: 100%;
+      .page-section {
+
+      }
+    }
+  }
+}
+
+.room-properties {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: -15px;
+
+  .property-icon {
+    color: #555;
+    padding: 15px;
+    text-align: center;
+    i {
+      display: block;
+    }
+  }
+
+  .property-icon-txt {
+    font-size: .9em;
+    text-transform: uppercase;
+    display: block;
+    font-weight: bold;
+  }
+}
+
+.reservation-form {
+
+  padding: {
+    bottom: 10px;
+  }
+
+  .help-block {
+    font-size: .9em;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .reservation-form-message {
+    font-size: .9em;
+    text-align: center;
+  }
+
+}
+
+.reservation-save-btn {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  background-color: $theme-color;
+  color: #FFF;
+  &:hover {
+    color: #e7e7e7;
+    background-color: $theme-color-transparent;
+  }
+}
+
+
+/* XS */
+@media (max-width: 768px) {
+
+  .section-title {
+    .section-title-txt {
+      border-bottom: 2px solid $theme-color;
+      border-top: 2px solid $theme-color;
+    }
+    .section-title-txt:before {
+      display: none;
+    }
+    .section-title-txt:after {
+      display: none;
+    }
+  }
+
+}
+
+
+/*SM*/
+@media (min-width: 768px) and (max-width: 992px) {
+  #footer {
+    padding: {
+      bottom: 80px;
+    }
+  }
+}
+
+/*MD*/
+@media (min-width: 992px) and (max-width: 1200px) {
+  #footer {
+    padding: {
+      bottom: 80px;
+    }
+  }
+}
+
+/* MD && LG */
+@media (min-width: 992px) {
+  #footer {
+    padding: {
+      //bottom: 75px;
+    }
+  }
+}
+
+/*LG*/
+@media (min-width: 1200px) {
+  .packages-slider {
+    width: 1170px;
+  }
+  #footer {
+    padding: {
+      bottom: 10px;
+    }
+  }
+}

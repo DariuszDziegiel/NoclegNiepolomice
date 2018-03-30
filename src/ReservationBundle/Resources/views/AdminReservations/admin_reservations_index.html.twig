@@ -1,0 +1,52 @@
+{% extends "@Admin/layout.html.twig" %}
+
+{% block js %}
+    <script>
+        var CALENDAR_ROUTE = 'calendar_draw_admin'
+    </script>
+    <script src="{{ asset('bundles/ReservationBundle/Resources/public/js/reservation_calendar.min.js') }}"></script>
+    <script src="{{ asset('bundles/ReservationBundle/Resources/public/AdminAvailability/js/admin_availability.min.js') }}"></script>
+    <script src="{{ asset('bundles/ReservationBundle/Resources/public/AdminReservations/js/admin_reservations_index.min.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('bundles/ReservationBundle/Resources/public/AdminReservations/css/admin_reservations_index.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="year-month-select-wrapper">
+        <div class="btn-group btn-group-justified" role="group">
+            <div class="btn-group btn-group-sm" role="group">
+                <a href="{{ path('admin_reservations_index', {'year': calMonthsDisplay.prev.year, 'month': calMonthsDisplay.prev.month}) }}" class="btn btn-default">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    {{ calMonthsDisplay.prev.title }} {{ calMonthsDisplay.prev.year }}
+                </a>
+            </div>
+            <div class="btn-group btn-group-lg text-center current-month-wrapper" role="group">
+                {{ calMonthsDisplay.current.title }} {{ calMonthsDisplay.current.year }}
+            </div>
+            <div class="btn-group btn-group-sm" role="group">
+                <a href="{{ path('admin_reservations_index', {'year': calMonthsDisplay.next.year, 'month': calMonthsDisplay.next.month}) }}" class="btn btn-default">
+                   {{ calMonthsDisplay.next.title }} {{ calMonthsDisplay.next.year }}
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <h2>Rezerwacje</h2>
+            {% if reservations is not empty %}
+                {% include '@Reservation/AdminReservations/partials/admin_reservations_list.html.twig' %}
+            {% else %}
+                <div class="alert alert-danger">Brak rezerwacji w wybranym miesiącu</div>
+            {% endif %}
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <h2>Dostępność</h2>
+            {% include '@Reservation/AdminReservations/partials/admin_availability_calendar.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
+

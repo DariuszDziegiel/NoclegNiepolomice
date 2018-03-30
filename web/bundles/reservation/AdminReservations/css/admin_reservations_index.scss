@@ -1,0 +1,19 @@
+@import "../../../../../AppBundle/Resources/public/_Common/css/partials/variables";
+@import "../../../../../AppBundle/Resources/public/_Common/css/partials/mixins";
+@import "../../../../../AppBundle/Resources/public/_Common/css/partials/calendar_availability";
+
+
+.year-month-select-wrapper {
+
+  background-color: #EAEAEA;
+  padding: 5px;
+
+  .current-month-wrapper {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.2em;
+  }
+
+}
+
+

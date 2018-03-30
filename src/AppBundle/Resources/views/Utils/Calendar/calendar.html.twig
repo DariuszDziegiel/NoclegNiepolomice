@@ -1,0 +1,94 @@
+<div class="calendar-wrapper">
+    <div class="calendar-operation-loader">
+        <img src="{{ asset('images/loading_circle.gif') }}" alt="loading indicator">
+    </div>
+    {% set time = (calMonth.year ~ '-' ~ calMonth.month)| date("U") %}
+    <div class="calendar-buttons">
+        <button class="calendar-prev-btn calendar-btn btn btn-default btn-sm pull-left"
+                data-year="{{ calButtons.prev.year }}"
+                data-month="{{ calButtons.prev.month }}">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            {{ calButtons.prev.title }} {{ calButtons.prev.year }}
+        </button>
+        <button class="calendar-next-btn calendar-btn btn btn-default btn-sm pull-right"
+                data-year="{{ calButtons.next.year }}"
+                data-month="{{ calButtons.next.month }}">
+            {{ calButtons.next.title }} {{ calButtons.next.year }}
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </button>
+    </div>
+    <div class="calendar-month-wrapper">
+        <table class="calendar-table">
+            <thead>
+                <tr>
+                    <th colspan="7" class="month-name">
+                        {% set monthNumber =  time| date('n')%}
+                        {% set yearNumber  =  time| date('Y')%}
+                        {{ ('calendar.month_' ~ monthNumber)| trans }} {{ yearNumber }}
+                    </th>
+                </tr>
+                <tr class="day-names">
+                    <th>Pn.</th>
+                    <th>Wt.</th>
+                    <th>Śr.</th>
+                    <th>Cz.</th>
+                    <th>Pt.</th>
+                    <th>Sb.</th>
+                    <th>Nd.</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% set daysInMonth = time| date('t') %}
+                {% set startDow = time| date('F 1\\s\\t Y')|date('N') - 1 %}
+                {% set dow = startDow %}
+                {% for day in range(1, daysInMonth) %}
+
+                {% if loop.first and startDow != 0 %}
+                    <td colspan="{{ startDow }}"></td>
+                {% endif %}
+
+                {% set date = time| date('Y') ~ '-' ~ time| date('m') ~ '-' ~ day| day_format %}
+
+                {% set cellClass = null %}
+                {% set reservationId = null %}
+                {% if date in calDates| keys %}
+
+                    {% set dateProperties = attribute(calDates, date) %}
+                    {% set cellClass = dateProperties.class %}
+
+                    {% if dateProperties.reservation_id is defined %}
+                        {% set reservationId = dateProperties.reservation_id %}
+                    {% endif %}
+                {% endif %}
+
+                <td class="day-cell{% if cellClass is not empty %} {{ cellClass }}{% endif %}" data-date="{{ date }}" {% if reservationId is not empty %} data-reservation-id="{{ reservationId }}"{% endif %}>
+                    <div>
+                        <div>{{ day }}</div>
+                        <div>
+                            {# day content here #}
+                            {% if reservationId is not empty and is_granted('ROLE_ADMIN') %}
+                                <small>R</small>
+                            {% endif %}
+                            <div class="msg-box"></div>
+                        </div>
+                    </div>
+                </td>
+
+                {% if loop.last and dow != 6 %}
+                    <td colspan="{{ 6 - dow }}">&nbsp;</td>
+                {% endif %}
+
+                {% if dow == 6 %}
+                {% set dow = 0 %}
+            </tr>
+            <tr>
+                {% else %}
+                    {% set dow = dow + 1 %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
